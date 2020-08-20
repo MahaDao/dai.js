@@ -143,6 +143,10 @@ export default [
     networkId: 4
   },
   {
+    name: 'matic',
+    networkId: 137
+  },
+  {
     name: 'goerli',
     networkId: 5
   },
