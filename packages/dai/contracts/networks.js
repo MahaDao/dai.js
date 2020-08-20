@@ -2,11 +2,13 @@ import tokens from './tokens';
 import contracts from './contracts';
 import * as abis from './abis';
 import kovanAddresses from './addresses/kovan.json';
+import maticAddresses from './addresses/matic.json';
 import mainnetAddresses from './addresses/mainnet.json';
 import testnetAddresses from './addresses/testnet.json';
 
 const addressMapping = {
   mainnet: mainnetAddresses,
+  matic: maticAddresses,
   kovan: kovanAddresses,
   testnet: testnetAddresses
 };
