@@ -57,6 +57,7 @@ export const USD_ETH = createCurrencyRatio(USD, MATIC);
 
 export const WMATIC = createCurrency('WMATIC');
 export const DAI = createCurrency('DAI');
+export const ARTH = createCurrency('ARTH');
 
 // Casting for savings dai
 export const DSR_DAI = createCurrency('DSR-DAI');
@@ -95,6 +96,7 @@ export const defaultTokens = [
   ...new Set([
     ...defaultCdpTypes.map(type => type.currency),
     DAI,
+    ARTH,
     WMATIC,
     SAI,
     DSR_DAI
