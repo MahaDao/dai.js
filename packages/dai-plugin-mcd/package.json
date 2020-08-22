@@ -1,5 +1,5 @@
 {
-  "name": "@makerdao/dai-plugin-mcd",
+  "name": "arth-plugin-mcd",
   "description": "Plugin to add Multi-Collateral Dai support to dai.js",
   "version": "1.5.19",
   "license": "MIT",
