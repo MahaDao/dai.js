@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { ServiceRoles } from './constants';
 import { stringToBytes } from './utils';
-import { DAI, ETH, WETH } from './index';
+import { DAI, MATIC, WMATIC } from './index';
 import * as math from './math';
 
 export default class CdpType {
@@ -72,7 +72,7 @@ export default class CdpType {
     // separate calls
     if (!this._prefetchPromise) {
       const adapterAddress = this._systemData.adapterAddress(this.ilk);
-      const { symbol } = this.currency === ETH ? WETH : this.currency;
+      const { symbol } = this.currency === MATIC ? WMATIC : this.currency;
 
       this._prefetchPromise = Promise.all([
         this._systemData

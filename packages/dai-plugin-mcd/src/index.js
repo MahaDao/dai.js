@@ -3,7 +3,7 @@ import mapValues from 'lodash/mapValues';
 import reduce from 'lodash/reduce';
 import uniqBy from 'lodash/uniqBy';
 import { createCurrency, createCurrencyRatio } from '@makerdao/currency';
-import testnetAddresses from '../contracts/addresses/testnet.json';
+import maticAddresss from '../contracts/addresses/matic.json';
 import kovanAddresses from '../contracts/addresses/kovan.json';
 import mainnetAddresses from '../contracts/addresses/mainnet.json';
 import abiMap from '../contracts/abiMap';
@@ -24,7 +24,7 @@ const { CDP_MANAGER, CDP_TYPE, SYSTEM_DATA, AUCTION, SAVINGS } = ServiceRoles;
 // MCD_JOIN_ETH_B matches MCD_JOIN_*
 // this implementation assumes that all contracts in kovan.json are also in testnet.json
 let addContracts = reduce(
-  testnetAddresses,
+  maticAddresss,
   (result, testnetAddress, name) => {
     let abi = abiMap[name];
     if (!abi) {
@@ -39,9 +39,9 @@ let addContracts = reduce(
       result[name] = {
         abi,
         address: {
-          testnet: testnetAddress,
-          kovan: kovanAddresses[name],
-          mainnet: mainnetAddresses[name]
+          matic: maticAddresss[name],
+          kovan: maticAddresss[name],
+          mainnet: maticAddresss[name]
         }
       };
     }
@@ -50,12 +50,12 @@ let addContracts = reduce(
   {}
 );
 
-export const ETH = createCurrency('ETH');
-export const MKR = createCurrency('MKR');
+export const MATIC = createCurrency('MATIC');
+export const MAHA = createCurrency('MAHA');
 export const USD = createCurrency('USD');
-export const USD_ETH = createCurrencyRatio(USD, ETH);
+export const USD_ETH = createCurrencyRatio(USD, MATIC);
 
-export const WETH = createCurrency('WETH');
+export const WMATIC = createCurrency('WMATIC');
 export const DAI = createCurrency('DAI');
 
 // Casting for savings dai
@@ -74,7 +74,7 @@ export const TUSD = createCurrency('TUSD');
 export const MANA = createCurrency('MANA');
 
 export const defaultCdpTypes = [
-  { currency: ETH, ilk: 'ETH-A' },
+  { currency: MATIC, ilk: 'MATIC-A' },
   { currency: BAT, ilk: 'BAT-A' },
   { currency: USDC, ilk: 'USDC-A', decimals: 6 },
   { currency: WBTC, ilk: 'WBTC-A', decimals: 8 },
@@ -95,7 +95,7 @@ export const defaultTokens = [
   ...new Set([
     ...defaultCdpTypes.map(type => type.currency),
     DAI,
-    WETH,
+    WMATIC,
     SAI,
     DSR_DAI
   ])
@@ -134,7 +134,11 @@ export const McdPlugin = {
       token: {
         erc20: [
           { currency: DAI, address: addContracts.MCD_DAI.address },
-          { currency: WETH, address: addContracts.ETH.address, abi: wethAbi },
+          {
+            currency: WMATIC,
+            address: addContracts.MATIC.address,
+            abi: wethAbi
+          },
           ...tokens
         ]
       },

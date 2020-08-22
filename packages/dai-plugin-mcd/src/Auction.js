@@ -8,7 +8,7 @@ export default class Auction {
       case DAI.symbol:
         this.contract = smartContractService.getContract('MCD_FLAP');
         break;
-      case 'MKR':
+      case 'MAHA':
         this.contract = smartContractService.getContract('MCD_FLOP');
         break;
       default:
