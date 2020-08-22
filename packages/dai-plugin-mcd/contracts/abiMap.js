@@ -9,7 +9,7 @@ module.exports = {
   GNT: require('./abis/GNT.json'),
   SAI: require('./abis/DSToken.json'),
   CDP_MANAGER: require('./abis/DssCdpManager.json'),
-  ETH: require('./abis/WETH9_.json'),
+  MATIC: require('./abis/WETH9_.json'),
   GET_CDPS: require('./abis/GetCdps.json'),
   MCD_ADM: require('./abis/DSRoles.json'),
   MCD_CAT: require('./abis/Cat.json'),
