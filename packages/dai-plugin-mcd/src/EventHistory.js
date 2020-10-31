@@ -206,20 +206,20 @@ export default async function getEventHistory(cdpManager, managedCdp, cache) {
               parseInt(transactionLogIndex, 16) === 1;
             return dink.lt(0) || dink.gt(0)
               ? {
-                type: dink.lt(0)
-                  ? 'WITHDRAW'
-                  : reclaim
+                  type: dink.lt(0)
+                    ? 'WITHDRAW'
+                    : reclaim
                     ? 'RECLAIM'
                     : 'DEPOSIT',
-                order: dink.lt(0) ? 3 : 1,
-                block,
-                txHash,
-                id,
-                ilk,
-                gem: managedCdp.currency.symbol,
-                adapter: address.toLowerCase(),
-                amount: Math.abs(parseWeiNumeric(dink)).toString()
-              }
+                  order: dink.lt(0) ? 3 : 1,
+                  block,
+                  txHash,
+                  id,
+                  ilk,
+                  gem: managedCdp.currency.symbol,
+                  adapter: address.toLowerCase(),
+                  amount: Math.abs(parseWeiNumeric(dink)).toString()
+                }
               : null;
           }
         )
