@@ -1,6 +1,6 @@
 export default {
-  MKR: 'MKR',
-  WETH: 'WETH',
-  PETH: 'PETH',
-  ETH: 'ETH'
+  MAHA: 'MAHA',
+  WMATIC: 'WMATIC',
+  PMATIC: 'PMATIC',
+  MATIC: 'MATIC'
 };
