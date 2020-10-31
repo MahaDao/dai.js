@@ -53,10 +53,12 @@ let addContracts = reduce(
 export const MATIC = createCurrency('MATIC');
 export const MAHA = createCurrency('MAHA');
 export const USD = createCurrency('USD');
-export const USD_ETH = createCurrencyRatio(USD, MATIC);
+export const USD_MATIC = createCurrencyRatio(USD, MATIC);
 
 export const WMATIC = createCurrency('WMATIC');
 export const DAI = createCurrency('DAI');
+export const POS_DAI = createCurrency('POS_DAI');
+
 export const ARTH = createCurrency('ARTH');
 
 // Casting for savings dai
@@ -77,6 +79,8 @@ export const MANA = createCurrency('MANA');
 export const defaultCdpTypes = [
   { currency: MATIC, ilk: 'MATIC-A' },
   { currency: BAT, ilk: 'BAT-A' },
+  { currency: POS_DAI, ilk: 'POS_DAI-A' },
+
   { currency: USDC, ilk: 'USDC-A', decimals: 6 },
   { currency: WBTC, ilk: 'WBTC-A', decimals: 8 },
   { currency: USDC, ilk: 'USDC-B', decimals: 6 },
@@ -98,6 +102,7 @@ export const defaultTokens = [
     DAI,
     ARTH,
     WMATIC,
+    POS_DAI,
     SAI,
     DSR_DAI
   ])
@@ -135,7 +140,14 @@ export const McdPlugin = {
       smartContract: { addContracts },
       token: {
         erc20: [
-          { currency: DAI, address: addContracts.MCD_DAI.address },
+          {
+            currency: DAI,
+            address: addContracts.MCD_DAI.address
+          },
+          {
+            currency: POS_DAI,
+            address: addContracts.POS_DAI.address
+          },
           {
             currency: WMATIC,
             address: addContracts.MATIC.address,

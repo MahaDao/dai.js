@@ -67,15 +67,9 @@ export default async function getEventHistory(cdpManager, managedCdp, cache) {
   const MCD_JOIN_DAI = cdpManager
     .get('smartContract')
     .getContractAddress('MCD_JOIN_DAI');
-  const MCD_JOIN_SAI = cdpManager
-    .get('smartContract')
-    .getContractAddress('MCD_JOIN_SAI');
   const CDP_MANAGER = cdpManager
     .get('smartContract')
     .getContractAddress('CDP_MANAGER');
-  const MIGRATION = cdpManager
-    .get('smartContract')
-    .getContractAddress('MIGRATION');
   const MCD_VAT = cdpManager.get('smartContract').getContractAddress('MCD_VAT');
   const MCD_CAT = cdpManager.get('smartContract').getContractAddress('MCD_CAT');
 
@@ -151,7 +145,7 @@ export default async function getEventHistory(cdpManager, managedCdp, cache) {
             // Lookup the dai join events on this block for this proxy address
             const proxy = topics[1];
             const joinDaiEvents = await web3.getPastLogs({
-              address: [MCD_JOIN_DAI, MCD_JOIN_SAI],
+              address: [MCD_JOIN_DAI],
               topics: [
                 dart.lt(0) ? EVENT_DAI_ADAPTER_JOIN : EVENT_DAI_ADAPTER_EXIT,
                 proxy
@@ -212,20 +206,20 @@ export default async function getEventHistory(cdpManager, managedCdp, cache) {
               parseInt(transactionLogIndex, 16) === 1;
             return dink.lt(0) || dink.gt(0)
               ? {
-                  type: dink.lt(0)
-                    ? 'WITHDRAW'
-                    : reclaim
+                type: dink.lt(0)
+                  ? 'WITHDRAW'
+                  : reclaim
                     ? 'RECLAIM'
                     : 'DEPOSIT',
-                  order: dink.lt(0) ? 3 : 1,
-                  block,
-                  txHash,
-                  id,
-                  ilk,
-                  gem: managedCdp.currency.symbol,
-                  adapter: address.toLowerCase(),
-                  amount: Math.abs(parseWeiNumeric(dink)).toString()
-                }
+                order: dink.lt(0) ? 3 : 1,
+                block,
+                txHash,
+                id,
+                ilk,
+                gem: managedCdp.currency.symbol,
+                adapter: address.toLowerCase(),
+                amount: Math.abs(parseWeiNumeric(dink)).toString()
+              }
               : null;
           }
         )
@@ -240,7 +234,7 @@ export default async function getEventHistory(cdpManager, managedCdp, cache) {
         r.map(({ blockNumber: block, transactionHash: txHash, topics }) => {
           const prevOwner = formatAddress(topics[1]);
           return {
-            type: prevOwner === MIGRATION ? 'MIGRATE' : 'GIVE',
+            type: 'GIVE',
             order: 1,
             block,
             txHash,

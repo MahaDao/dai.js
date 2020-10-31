@@ -3,6 +3,7 @@ module.exports = {
   REP: require('./abis/REP.json'),
   ZRX: require('./abis/ZRX.json'),
   OMG: require('./abis/OMG.json'),
+  POS_DAI: require('./abis/KNC.json'),
   BAT: require('./abis/BAT.json'),
   DGD: require('./abis/DGD.json'),
   KNC: require('./abis/KNC.json'),
