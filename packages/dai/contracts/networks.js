@@ -3,12 +3,14 @@ import contracts from './contracts';
 import * as abis from './abis';
 import kovanAddresses from './addresses/kovan.json';
 import maticAddresses from './addresses/matic.json';
+import maticMumbaiAddresses from './addresses/maticMumbai.json';
 import mainnetAddresses from './addresses/mainnet.json';
 import testnetAddresses from './addresses/testnet.json';
 
 const addressMapping = {
   mainnet: mainnetAddresses,
   matic: maticAddresses,
+  maticMumbai: maticMumbaiAddresses,
   kovan: kovanAddresses,
   testnet: testnetAddresses
 };
@@ -140,5 +142,9 @@ export default [
   {
     name: 'matic',
     networkId: 137
+  },
+  {
+    name: 'maticmumbai',
+    networkId: 80001
   }
 ];

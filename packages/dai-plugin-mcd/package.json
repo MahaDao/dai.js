@@ -1,7 +1,7 @@
 {
   "name": "arth-plugin-mcd",
   "description": "Plugin to add Multi-Collateral Dai support to dai.js",
-  "version": "1.5.36",
+  "version": "1.5.37",
   "license": "MIT",
   "main": "dist/index.js",
   "unpkg": "umd/index.js",

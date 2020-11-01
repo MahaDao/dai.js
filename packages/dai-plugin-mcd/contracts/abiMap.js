@@ -4,6 +4,7 @@ module.exports = {
   ZRX: require('./abis/ZRX.json'),
   OMG: require('./abis/OMG.json'),
   POS_DAI: require('./abis/KNC.json'),
+  TEST: require('./abis/KNC.json'),
   BAT: require('./abis/BAT.json'),
   DGD: require('./abis/DGD.json'),
   KNC: require('./abis/KNC.json'),

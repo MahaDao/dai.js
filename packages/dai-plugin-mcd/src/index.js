@@ -4,7 +4,7 @@ import reduce from 'lodash/reduce';
 import uniqBy from 'lodash/uniqBy';
 import { createCurrency, createCurrencyRatio } from '@makerdao/currency';
 import maticAddresss from '../contracts/addresses/matic.json';
-// import kovanAddresses from '../contracts/addresses/kovan.json';
+import maticMumbaiAddresss from '../contracts/addresses/maticMumbai.json.json';
 // import mainnetAddresses from '../contracts/addresses/mainnet.json';
 import abiMap from '../contracts/abiMap';
 import CdpManager from './CdpManager';
@@ -40,6 +40,7 @@ let addContracts = reduce(
         abi,
         address: {
           matic: maticAddresss[name],
+          maticMumbai: maticMumbaiAddresss[name],
           kovan: maticAddresss[name],
           mainnet: maticAddresss[name]
         }
@@ -57,6 +58,7 @@ export const USD_MATIC = createCurrencyRatio(USD, MATIC);
 
 export const WMATIC = createCurrency('WMATIC');
 export const DAI = createCurrency('DAI');
+export const TEST = createCurrency('TEST');
 export const POS_DAI = createCurrency('POS_DAI');
 
 export const ARTH = createCurrency('ARTH');
