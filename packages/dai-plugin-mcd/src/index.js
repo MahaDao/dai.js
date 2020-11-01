@@ -4,7 +4,7 @@ import reduce from 'lodash/reduce';
 import uniqBy from 'lodash/uniqBy';
 import { createCurrency, createCurrencyRatio } from '@makerdao/currency';
 import maticAddresss from '../contracts/addresses/matic.json';
-import maticMumbaiAddresss from '../contracts/addresses/maticMumbai.json.json';
+import maticMumbaiAddresss from '../contracts/addresses/maticMumbai.json';
 // import mainnetAddresses from '../contracts/addresses/mainnet.json';
 import abiMap from '../contracts/abiMap';
 import CdpManager from './CdpManager';
